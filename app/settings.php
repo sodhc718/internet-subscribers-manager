@@ -20,5 +20,11 @@ return [
             'name' => 'app',
             'path' => __DIR__ . '/../log/app.log',
         ],
+        'db' => [
+            'host' => 'localhost',
+            'user' => 'root',
+            'pass' => '',
+            'dbname' => 'internet-subscribers-manager',
+        ],
     ],
 ];
