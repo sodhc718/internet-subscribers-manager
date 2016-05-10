@@ -1,0 +1,25 @@
+{
+    "name": "shadowofdeath718/internet-subscribers-manager",
+    "description": "Simple internet subscribers manager",
+    "require": {
+        "slim/slim": "^3.4",
+        "slim/twig-view": "^2.0",
+        "slim/flash": "^0.1.0",
+        "monolog/monolog": "^1.13"
+    },
+    "authors": [
+        {
+            "name": "Hai Chau",
+            "email": "shadowofdeath718@gmail.com"
+        },
+        {
+            "name": "Viet Ha",
+            "email": "arshavindn@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/src"
+        }
+    }
+}
