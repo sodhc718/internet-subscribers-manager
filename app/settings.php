@@ -22,8 +22,8 @@ return [
         ],
         'db' => [
             'host' => 'localhost',
-            'user' => 'root',
-            'pass' => '',
+            'user' => 'mozart',
+            'pass' => 'vietha23',
             'dbname' => 'internet_subscribers_manager',
         ],
     ],

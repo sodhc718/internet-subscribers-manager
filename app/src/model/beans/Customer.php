@@ -17,16 +17,16 @@ class Customer
 
     function __construct(array $data)
     {
-        if (isset($data['subcribers_num'])) {
-            $this->subcribers_num = $data['subcribers_num'];
+        if (isset($data['so_thue_bao'])) {
+            $this->subcribers_num = $data['so_thue_bao'];
         }
-        $this->name = $data['name'];
-        $this->address = $data['address'];
-        $this->phone_num = $data['phone_num'];
-        $this->plan_id = $data['plan_id'];
-        $this->register_date = $data['register_date'];
+        $this->name = $data['hoten'];
+        $this->address = $data['dia_chi'];
+        $this->phone_num = $data['so_dien_thoai'];
+        $this->plan_id = $data['ma_goi_cuoc'];
+        $this->register_date = $data['ngay_dang_ki'];
         $this->email = $data['email'];
-        $this->passwd = $data['passwd'];
+        $this->passwd = $data['mat_khau'];
     }
 
     /**

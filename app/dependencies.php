@@ -20,7 +20,7 @@ $container['view'] = function ($c) {
 };
 
 // Database
-$container['db'] = $container['db'] = function ($c) {
+$container['db'] = function ($c) {
     $db = $c['settings']['db'];
     $pdo = new PDO("mysql:host=" . $db['host'] . ";dbname=" . $db['dbname'],
         $db['user'], $db['pass']);
@@ -52,5 +52,5 @@ $container['logger'] = function ($c) {
 // -----------------------------------------------------------------------------
 
 $container[App\controllers\HomeAction::class] = function ($c) {
-    return new App\controllers\HomeAction($c->get('view'), $c->get('logger'));
+    return new App\controllers\HomeAction($c->get('view'), $c->get('logger'), $c->get('db'));
 };

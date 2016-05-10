@@ -1,12 +1,13 @@
 <?php
 namespace App\model\dao;
 
-use App\model\Customer;
+use App\model\dao\Mapper;
+use App\model\beans\Customer;
 
 /**
 *
 */
-class CustomerDAO
+class CustomerDAO extends Mapper
 {
 
     public function getCustomerBySubNum($sub_num)

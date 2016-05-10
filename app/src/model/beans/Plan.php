@@ -13,13 +13,12 @@ class Plan
 
     function __construct(array $data)
     {
-        if (isset($data['plan_id'])) {
-            $this->plan_id = $data['plan_id'];
+        if (isset($data['ma_goi_cuoc'])) {
+            $this->plan_id = $data['ma_goi_cuoc'];
         }
-
-        $this->plan_name = $data['plan_name'];
-        $this->plan_desc = $data['plan_desc'];
-        $this->plan_cost = $data['plan_cost'];
+        $this->plan_name = $data['ten_goi_cuoc'];
+        $this->plan_desc = $data['mo_ta'];
+        $this->plan_cost = $data['cuoc_phi'];
     }
 
     /**

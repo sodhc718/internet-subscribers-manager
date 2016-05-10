@@ -1,7 +1,8 @@
 <?php
 namespace App\model\dao;
 
-use App\model\Plan;
+use App\model\dao\Mapper;
+use App\model\beans\Plan;
 
 /**
 *
@@ -16,7 +17,7 @@ class PlanDAO extends Mapper
 
         $results = [];
         while ($row = $stmt->fetch()) {
-            $result[] = new Plan($row);
+            $results[] = new Plan($row);
         }
         return $results;
     }

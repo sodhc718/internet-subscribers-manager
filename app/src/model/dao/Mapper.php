@@ -1,4 +1,5 @@
 <?php
+namespace App\model\dao;
 
 abstract class Mapper {
     protected $db;
