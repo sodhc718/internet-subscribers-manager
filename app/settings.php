@@ -3,7 +3,7 @@ return [
     'settings' => [
         // Slim Settings
         'determineRouteBeforeAppMiddleware' => false,
-        'displayErrorDetails' => false,
+        'displayErrorDetails' => true,
 
         // View settings
         'view' => [
@@ -24,7 +24,7 @@ return [
             'host' => 'localhost',
             'user' => 'root',
             'pass' => '',
-            'dbname' => 'internet-subscribers-manager',
+            'dbname' => 'internet_subscribers_manager',
         ],
     ],
 ];
