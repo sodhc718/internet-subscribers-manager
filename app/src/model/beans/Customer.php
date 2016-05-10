@@ -1,10 +1,12 @@
 <?php
+namespace App\model\beans;
+
 /**
 *
 */
 class Customer
 {
-    protected $subcribers_id;
+    protected $subcribers_num;
     protected $name;
     protected $address;
     protected $phone_num;
@@ -15,8 +17,8 @@ class Customer
 
     function __construct(array $data)
     {
-        if (isset($data['subcribers_id'])) {
-            $this->subcribers_id = $data['subcribers_id'];
+        if (isset($data['subcribers_num'])) {
+            $this->subcribers_num = $data['subcribers_num'];
         }
         $this->name = $data['name'];
         $this->address = $data['address'];
@@ -28,25 +30,25 @@ class Customer
     }
 
     /**
-     * Gets the value of subcribers_id.
+     * Gets the value of subcribers_num.
      *
      * @return mixed
      */
     public function getSubcribersId()
     {
-        return $this->subcribers_id;
+        return $this->subcribers_num;
     }
 
     /**
-     * Sets the value of subcribers_id.
+     * Sets the value of subcribers_num.
      *
-     * @param mixed $subcribers_id the subcribers id
+     * @param mixed $subcribers_num the subcribers id
      *
      * @return self
      */
-    protected function setSubcribersId($subcribers_id)
+    protected function setSubcribersId($subcribers_num)
     {
-        $this->subcribers_id = $subcribers_id;
+        $this->subcribers_num = $subcribers_num;
 
         return $this;
     }
