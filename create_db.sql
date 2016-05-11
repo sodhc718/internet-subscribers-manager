@@ -8,7 +8,7 @@ CREATE TABLE `goi_cuoc` (
   `mo_ta` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `cuoc_phi` int(8) NOT NULL,
   PRIMARY KEY (`ma_goi_cuoc`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 # create table khach_hang
 CREATE TABLE `khach_hang` (
@@ -24,4 +24,4 @@ CREATE TABLE `khach_hang` (
   KEY `fk_ma_goi_cuoc` (`ma_goi_cuoc`),
   CONSTRAINT `fk_ma_goi_cuoc` FOREIGN KEY (`ma_goi_cuoc`)
   REFERENCES `goi_cuoc` (`ma_goi_cuoc`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
