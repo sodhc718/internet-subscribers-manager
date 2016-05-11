@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -117,7 +117,7 @@
                 <li>
                   <a href="#"><i class="icon-users"></i> <span>Thuê bao</span></a>
                   <ul>
-                    <li><a href="subscribers_manager.html">Danh sách thuê bao</a></li>
+                    <li class="active"><a href="#">Danh sách thuê bao</a></li>
                     <li><a href="#">Chi tiết thuê bao</a></li>
                     <li><a href="add_subscriber.html">Thêm thuê bao</a></li>
                   </ul>
@@ -125,7 +125,7 @@
                 <li>
                   <a href="#"><i class="glyphicon glyphicon-list-alt"></i> <span>Gói cước dịch vụ</span></a>
                   <ul>
-                    <li class="active"><a href="plans_manager.html">Quản lý gói cước</a></li>
+                    <li><a href="plans_manager.html">Quản lý gói cước</a></li>
                     <li><a href="#">Thêm gói cước</a></li>
                   </ul>
                 </li>
@@ -149,7 +149,7 @@
         <div class="page-header">
           <div class="page-header-content">
             <div class="page-title">
-              <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Gói cước dịch vụ</span> - Quản lý gói cước</h4>
+              <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Thuê bao</span> - Danh sách thuê bao</h4>
             </div>
 
           </div>
@@ -157,8 +157,8 @@
           <div class="breadcrumb-line">
             <ul class="breadcrumb">
               <li><a href="index.html"><i class="icon-home2 position-left"></i> Home</a></li>
-              <li><a href="#">Gói cước dịch vụ</a></li>
-              <li class="active">Quản lý gói cước</li>
+              <li><a href="#">Thuê bao</a></li>
+              <li class="active">Quản lý thuê bao</li>
             </ul>
 
             <ul class="breadcrumb-elements">
@@ -186,7 +186,7 @@
           <!-- Table panel -->
           <div class="panel panel-flat">
             <div class="panel-heading">
-              <h5 class="panel-title">Danh sách các gói cước</h5>
+              <h5 class="panel-title">Danh sách thuê bao</h5>
               <div class="heading-elements">
                 <ul class="icons-list">
                   <li><a data-action="collapse"></a></li>
@@ -196,29 +196,27 @@
             </div>
 
             <div class="panel-body">
-              <p class="content-group">Danh sách các gói cước gồm mã gói cước, tên gói cước, mô tả và cước phí</p>
+              <p class="content-group">Danh sách thuê bao gồm họ tên, số hợp đồng, gói cước và địa chỉ</p>
             </div>
 
             <!-- <div class="table-responsive"> -->
               <table class="table datatable-basic table-hover">
                 <thead>
                   <tr>
-                    <th>Mã gói cước</th>
-                    <th>Tên gói cước</th>
-                    <th>Cước phí</th>
-                    <th>Mô tả</th>
+                    <th>Số HĐ</th>
+                    <th>Họ tên</th>
+                    <th>Gói dịch vụ</th>
+                    <th>Địa chỉ</th>
                     <th class="text-center">Hành động</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {% for plan in plans %}
+                  {% for customer in customers %}
                     <tr>
-                      <td>{{ plan.getPlanId() }}</td>
-                      <td>{{ plan.getPlanName() }}</td>
-                      <td>
-                        <span class="label label-default">{{ plan.getPlanCost() }} VND</span>
-                      </td>
-                      <td>{{ plan.getPlanDesc() }}</td>
+                      <td>{{ customer.getSubcribersNum() }}</td>
+                      <td>{{ customer.getName() }}</td>
+                      <td>{{ plans[customer.getPlanId()] }}</td>
+                      <td>{{ customer.getAddress() }}</td>
                       <td class="text-center">
                         <ul class="icons-list">
                           <li>

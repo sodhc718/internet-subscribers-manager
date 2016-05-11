@@ -22,6 +22,16 @@ class PlanDAO extends Mapper
         return $results;
     }
 
+    public function getAllPlansToArray()
+    {
+        $plans = $this->getAllPlans();
+        $results = [];
+        foreach ($plans as $plan) {
+            $results[$plan->getPlanId()] = $plan->getPlanName();
+        }
+        return $results;
+    }
+
     public function getPlanById($plan_id)
     {
         $sql = "SELECT * FROM goi_cuoc WHERE ma_goi_cuoc = :plan_id";

@@ -34,7 +34,7 @@ class Customer
      *
      * @return mixed
      */
-    public function getSubcribersId()
+    public function getSubcribersNum()
     {
         return $this->subcribers_num;
     }
@@ -46,7 +46,7 @@ class Customer
      *
      * @return self
      */
-    protected function setSubcribersId($subcribers_num)
+    protected function setSubcribersNum($subcribers_num)
     {
         $this->subcribers_num = $subcribers_num;
 
@@ -133,6 +133,14 @@ class Customer
     public function getPlanId()
     {
         return $this->plan_id;
+    }
+
+    /**
+     * @param $planList a key-value array of plan_id-plan_name
+     */
+    public function getPlanName($planList)
+    {
+        return $planList->get($this->getPlanId());
     }
 
     /**

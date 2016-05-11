@@ -10,6 +10,18 @@ use App\model\beans\Customer;
 class CustomerDAO extends Mapper
 {
 
+    public function getAllCustomers()
+    {
+        $sql = "SELECT * FROM khach_hang";
+        $stmt = $this->db->query($sql);
+
+        $results = [];
+        while ($row = $stmt->fetch()) {
+            $results[] = new Customer($row);
+        }
+        return $results;
+    }
+
     public function getCustomerBySubNum($sub_num)
     {
         $sql = "SELECT * FROM khach_hang WHERE so_thue_bao = :sub_num";

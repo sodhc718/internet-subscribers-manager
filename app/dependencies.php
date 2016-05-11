@@ -58,3 +58,7 @@ $container[App\controllers\HomeAction::class] = function ($c) {
 $container[App\controllers\PlansManager::class] = function ($c) {
     return new App\controllers\PlansManager($c->get('view'), $c->get('logger'), $c->get('db'));
 };
+
+$container[App\controllers\SubscribersManager::class] = function ($c) {
+    return new App\controllers\SubscribersManager($c->get('view'), $c->get('logger'), $c->get('db'));
+};
