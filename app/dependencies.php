@@ -54,3 +54,7 @@ $container['logger'] = function ($c) {
 $container[App\controllers\HomeAction::class] = function ($c) {
     return new App\controllers\HomeAction($c->get('view'), $c->get('logger'), $c->get('db'));
 };
+
+$container[App\controllers\PlansManager::class] = function ($c) {
+    return new App\controllers\PlansManager($c->get('view'), $c->get('logger'), $c->get('db'));
+};
