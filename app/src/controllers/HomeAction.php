@@ -24,11 +24,17 @@ final class HomeAction
 
     public function __invoke(Request $request, Response $response, $args)
     {
+        if(!isset($_SESSION['auth'])) {
+            return $response->withRedirect('login');
+        }
         $this->logger->info("Home page action dispatched");
 
         $planDAO = new PlanDAO($this->db);
         $planList = $planDAO->getAllPlans();
-        $this->view->render($response, 'home.twig', ["planList" => $planList]);
+        $this->view->render($response, 'home.twig',
+                                ["plans" => $planList,
+                                 "category" => "Trang chủ",
+                                 "sub_category"=> "Giới thiệu"]);
         return $response;
     }
 }
