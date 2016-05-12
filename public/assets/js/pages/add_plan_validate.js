@@ -47,7 +47,12 @@ $(function() {
 
   // Confirmation dialog
   $('.confirm').on('click', function() {
+      $tr = $(this).closest('tr');
       bootbox.confirm("Bạn có chắc chắn muốn xoá gói cước này không?", function(result) {
+        if (result == true) {
+          $.get('/delete-plan', {"planID": $tr.children().first('td').text()})
+          $tr.remove();
+        }
       });
   });
 });

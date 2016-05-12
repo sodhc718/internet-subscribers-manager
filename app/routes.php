@@ -15,3 +15,6 @@ $app->get('/add-plan', App\controllers\AddPlan::class)
 
 $app->post('/add-plan', App\controllers\AddPlan::class)
     ->setName('add-plan');
+
+$app->get('/delete-plan', App\controllers\DeletePlan::class)
+    ->setName('delete-plan');

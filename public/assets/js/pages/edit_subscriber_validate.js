@@ -110,7 +110,9 @@ $(function() {
 
   // Confirmation dialog
   $('.confirm').on('click', function() {
+      $tr = $(this).closest('tr');
       bootbox.confirm("Bạn có chắc chắn muốn xoá thuê bao này không?", function(result) {
+        if (result) { $tr.remove(); }
       });
   });
 });
