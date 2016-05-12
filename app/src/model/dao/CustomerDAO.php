@@ -29,7 +29,7 @@ class CustomerDAO extends Mapper
         $result = $stmt->execute(["sub_num" => $sub_num]);
 
         if ($result) {
-            return new Customer($result->fetch());
+            return new Customer($stmt->fetch());
         }
     }
 
@@ -40,7 +40,7 @@ class CustomerDAO extends Mapper
         $results = $stmt->execute(["plan_id" => $plan_id]);
 
         $customerList = [];
-        while ($row = $result->fetch()) {
+        while ($row = $stmt->fetch()) {
             $customerList = new Customer($row);
         }
     }

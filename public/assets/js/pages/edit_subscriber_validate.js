@@ -121,4 +121,24 @@ $(function() {
         }
       });
   });
+
+
+  $("a[data-target=#edit_subscriber]").click(function(ev) {
+    $tr = $(this).closest('tr');
+    var subNum = $tr.children().first('td').text();
+    $.getJSON('/get-customer-data-subnum', {"subNum": subNum}, function (data) {
+      $("#edit_subscriber input[name=fullName]").val(data[0]);
+      $("#edit_subscriber input[name=address]").val(data[1]);
+      $("#edit_subscriber input[name=passport]").val(data[2]);
+      $("#edit_subscriber input[name=passportIssueDate]").val(data[3]);
+      $("#edit_subscriber input[name=passportIssueAddress]").val(data[4]);
+      $("#edit_subscriber input[name=email]").val(data[5]);
+      $("#edit_subscriber input[name=contractCode]").val(data[6]);
+      $("#edit_subscriber input[name=phoneNumber]").val(data[7]);
+      $("#edit_subscriber select[name=planSelect]").val(data[8]);
+      $("#edit_subscriber input[name=registerDate]").val(data[9]);
+      $("#edit_subscriber input[name=username]").val(data[10]);
+    });
+  });
+
 });

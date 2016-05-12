@@ -45,3 +45,6 @@ $app->post('/add-subscriber', App\controllers\AddSubscriber::class)
 
 $app->get('/delete-customer', App\controllers\DeleteCustomer::class)
     ->setName('delete-customer');
+
+$app->get('/get-customer-data-subnum', App\controllers\SubscribersManager::class. ':getCustomerDataBySubNum')
+    ->setName('get-customer-data-subnum');

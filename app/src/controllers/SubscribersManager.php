@@ -38,4 +38,18 @@ final class SubscribersManager
                              "sub_category"=> "Danh sách thuê bao"]);
         return $response;
     }
+
+    public function getCustomerDataBySubNum(Request $request, Response $response, $args)
+    {
+        $subNum = $request->getParam('subNum');
+        $customerDAO = new CustomerDAO($this->db);
+        $customer = $customerDAO->getCustomerBySubNum($subNum);
+        $customerData = array($customer->getName(), $customer->getAddress(),
+            $customer->getPassport(), $customer->getPassportIssueDate(), $customer->getPassportIssueLoc(),
+            $customer->getEmail(), $customer->getPhoneNum(),
+            $customer->getSubcribersNum(), $customer->getPlanId(), $customer->getRegisterDate(),
+            $customer->getUsername());
+        $response = $response->withJson($customerData, 201);
+        return $response;
+    }
 }

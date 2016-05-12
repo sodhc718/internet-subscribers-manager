@@ -177,12 +177,10 @@
                       <span class="input-group-addon">
                         <i class="icon-package"></i>
                       </span>
-                      <select class="bootstrap-select bs-select-hidden" data-width="100%">
-                        <option value="AK">FTTH-F2</option>
-                        <option value="HI">FTTH-F3</option>
-                        <option value="CA">FTTH-F4</option>
-                        <option value="NV">FTTH-F5</option>
-                        <option value="OR">FTTH-F6</option>
+                      <select name="planSelect" class="bootstrap-select bs-select-hidden" data-width="100%">
+                        {% for planID, planName in plans %}
+                          <option value="{{ planID }}">{{ planName }}</option>
+                        {% endfor %}
                       </select>
                     </div>
 
@@ -207,6 +205,17 @@
                         <i class="icon-user"></i>
                       </span>
                       <input name="username" class="form-control" placeholder="Username dùng để đăng nhập xem thông tin" type="text"></input>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-lg-2">Old password:</label>
+                  <div class="col-lg-10">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="icon-lock2"></i>
+                      </span>
+                      <input name="oldPassword" class="form-control" placeholder="Nhập mật khẩu cũ" type="password"></input>
                     </div>
                   </div>
                 </div>
