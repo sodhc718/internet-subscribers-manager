@@ -62,3 +62,7 @@ $container[App\controllers\PlansManager::class] = function ($c) {
 $container[App\controllers\SubscribersManager::class] = function ($c) {
     return new App\controllers\SubscribersManager($c->get('view'), $c->get('logger'), $c->get('db'));
 };
+
+$container[App\controllers\AddPlan::class] = function ($c) {
+    return new App\controllers\AddPlan($c->get('view'), $c->get('logger'), $c->get('db'));
+};

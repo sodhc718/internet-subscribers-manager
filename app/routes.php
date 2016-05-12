@@ -9,3 +9,9 @@ $app->get('/plans-manager', App\controllers\PlansManager::class)
 
 $app->get('/subs-manager', App\controllers\SubscribersManager::class)
     ->setName('subs-manager');
+
+$app->get('/add-plan', App\controllers\AddPlan::class)
+    ->setName('add-plan');
+
+$app->post('/add-plan', App\controllers\AddPlan::class)
+    ->setName('add-plan');

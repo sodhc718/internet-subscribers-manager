@@ -42,4 +42,18 @@ class PlanDAO extends Mapper
             return new Plan($result->fetch());
         }
     }
+
+    public function insert(Plan $plan)
+    {
+        $sql = "insert into goi_cuoc(ten_goi_cuoc, cuoc_phi, mo_ta)
+                values(:planName, :planPrice, :planDes)";
+        $stmt = $this->db->prepare($sql);
+        echo $plan->getPlanDesc();
+        $result = $stmt->execute(["planName" => $plan->getPlanName(),
+                                  "planPrice" => $plan->getPlanCost(),
+                                  "planDes" => $plan->getPlanDesc()]);
+        if (!$result) {
+            throw new Exception("Could not save record");
+        }
+    }
 }
