@@ -65,4 +65,17 @@ class PlanDAO extends Mapper
             throw new Exception("Could not delete record");
         }
     }
+
+    public function update($planData)
+    {
+        $sql = "update goi_cuoc set ten_goi_cuoc = :planName, cuoc_phi = :planPrice, mo_ta = :planDes where ma_goi_cuoc = :planID";
+        $stmt = $this->db->prepare($sql);
+        $result = $stmt->execute(["planName" => $planData["planName"],
+                                  "planPrice" => $planData["planPrice"],
+                                  "planDes" => $planData["planDes"],
+                                  "planID" => $planData["planID"]]);
+        if (!$result) {
+            throw new Exception("Could not update record");
+        }
+    }
 }

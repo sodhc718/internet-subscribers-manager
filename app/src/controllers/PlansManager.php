@@ -57,4 +57,19 @@ final class PlansManager
         $response = $response->withJson($planData, 201);
         return $response;
     }
+
+    public function updatePlan(Request $request, Response $response, $args)
+    {
+        $planDAO = new PlanDAO($this->db);
+        $planData = $request->getParam("planData");
+        // $planData = [];
+        // $planData['planID'] = filter_var($data['planID'], FILTER_SANITIZE_NUMBER_INT);
+        // $planData['planName'] = filter_var($data['planName'], FILTER_SANITIZE_STRING);
+        // $planData['planDes'] = filter_var($data['planDes'], FILTER_SANITIZE_STRING);
+        // $planData['planPrice'] = filter_var($data['planPrice'], FILTER_SANITIZE_NUMBER_INT);
+        $planDAO->update($planData);
+
+        $response = $response->withJson($planData, 201);
+        return $response;
+    }
 }

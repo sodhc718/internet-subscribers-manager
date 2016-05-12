@@ -13,6 +13,9 @@ $app->get('/get-plan-data', App\controllers\PlansManager::class. ':getPlanData')
 $app->get('/get-plan-data-id', App\controllers\PlansManager::class. ':getPlanDataByID')
     ->setName('get-plan-data-id');
 
+$app->post('/update-plan', App\controllers\PlansManager::class. ':updatePlan')
+    ->setName('update-plan');
+
 $app->get('/subs-manager', App\controllers\SubscribersManager::class)
     ->setName('subs-manager');
 
