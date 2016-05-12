@@ -24,8 +24,9 @@ final class SubscribersManager
 
     public function __invoke(Request $request, Response $response, $args)
     {
-        $this->logger->info("Home page action dispatched");
-
+        if(!isset($_SESSION['auth'])) {
+            return $response->withRedirect('login');
+        }
         $planDAO = new PlanDAO($this->db);
         $plans = $planDAO->getAllPlansToArray();
         $customerDAO = new CustomerDAO($this->db);

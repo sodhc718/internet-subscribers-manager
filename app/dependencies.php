@@ -34,6 +34,7 @@ $container['flash'] = function ($c) {
     return new Slim\Flash\Messages;
 };
 
+
 // -----------------------------------------------------------------------------
 // Service factories
 // -----------------------------------------------------------------------------
@@ -45,6 +46,13 @@ $container['logger'] = function ($c) {
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['logger']['path'], Monolog\Logger::DEBUG));
     return $logger;
+};
+
+// Get auth
+$container['auth'] = function ($c) {
+    $settings = $c->get('settings');
+    $admin_auth = $settings['auth'];
+    return $admin_auth;
 };
 
 // -----------------------------------------------------------------------------
@@ -61,6 +69,15 @@ $container[App\controllers\PlansManager::class] = function ($c) {
 
 $container[App\controllers\SubscribersManager::class] = function ($c) {
     return new App\controllers\SubscribersManager($c->get('view'), $c->get('logger'), $c->get('db'));
+};
+
+
+$container[App\controllers\LoginAction::class] = function ($c) {
+    return new App\controllers\LoginAction($c->get('view'), $c->get('logger'), $c->get('db'), $c->get('auth'));
+};
+
+$container[App\controllers\LogoutAction::class] = function ($c) {
+    return new App\controllers\LogoutAction($c->get('view'), $c->get('logger'));
 };
 
 $container[App\controllers\AddPlan::class] = function ($c) {
