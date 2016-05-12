@@ -1,6 +1,8 @@
 # create database
 create database internet_subscribers_manager;
 
+use internet_subscribers_manager;
+
 # create table goi_cuoc
 CREATE TABLE `goi_cuoc` (
   `ma_goi_cuoc` int(3) NOT NULL AUTO_INCREMENT,
@@ -12,12 +14,16 @@ CREATE TABLE `goi_cuoc` (
 
 # create table khach_hang
 CREATE TABLE `khach_hang` (
-  `so_thue_bao` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
+  `so_thue_bao` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `hoten` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `dia_chi` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `so_dien_thoai` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
   `ma_goi_cuoc` int(3) NOT NULL,
+  `cmnd` int(15) NOT NULL,
+  `noi_cap_cmnd` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  `ngay_cap_cmnd` date NOT NULL,
   `ngay_dang_ki` date NOT NULL,
+  `username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `mat_khau` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`so_thue_bao`),
