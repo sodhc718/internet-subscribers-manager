@@ -24,11 +24,15 @@ final class PlansManager
 
     public function __invoke(Request $request, Response $response, $args)
     {
-        $this->logger->info("Home page action dispatched");
+        $category = $request->getAttribute("category");
+        $sub_category = $request->getAttribute("sub_category");
 
         $planDAO = new PlanDAO($this->db);
         $planList = $planDAO->getAllPlans();
-        $this->view->render($response, 'plans_manager.twig', ["plans" => $planList]);
+        $this->view->render($response, 'plans_manager.twig',
+                            ["plans" => $planList,
+                             "category" => $category,
+                             "sub_category"=> $sub_category]);
         return $response;
     }
 }
