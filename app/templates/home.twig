@@ -1,15 +1,39 @@
-<!DOCTYPE html>
-<html lang="vi">
-    <head>
-        <meta charset="utf-8"/>
-        <title>Slim 3</title>
-        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-        <link href='{{ base_url() }}/css/style.css' rel='stylesheet' type='text/css'>
-    </head>
-    <body>
-        {% for plan in planList %}
-            <li>{{ plan.getPlanDesc()|e }}</li>
-        {% endfor %}
-    </body>
-</html>
+{% extends 'base.twig' %}
+{% block head %}
+  <script type="text/javascript" src="{{ base_url() }}/assets/js/pages/add_plan_validate.js"></script>
+{% endblock %}
 
+{% block content_area %}
+  <!-- Content area -->
+  <div class="content">
+
+    <div class="panel panel-flat">
+      <div class="panel-heading">
+        <h5 class="panel-title">Giới thiệu</h5>
+      </div>
+      <div class="panel-body">
+        <p class="content-group">
+          Website quản lý thuê bao internet dùng để quản lý các gói cước internet và thông tin khách hàng sử dụng, được xây dựng theo mô hình MVC trên nền microframework Slim, một framework nhỏ gọn, cung cấp các tính năng đủ dùng cho viết tạo website. Gồm các chức năng chính sau:
+        </p>
+        <p class="content-group">
+            * Quản lý thuê bao
+        </p>
+        <p class="content-group">
+            * Quản lý các gói cước sử dụng
+        </p>
+        <p class="content-group">
+            Mã nguồn website cũng như quá trình phát triển có thể xem tại Github: 
+            <a href="https://github.com/shadowofdeath718/internet-subscribers-manager">Github</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer text-muted">
+      &copy; 2016. Developed by Luu Dinh Hai Chau & Tran Viet Ha - Theme: Limitless Web App by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+    </div>
+    <!-- /footer -->
+
+  </div>
+  <!-- /content area -->
+{% endblock %}

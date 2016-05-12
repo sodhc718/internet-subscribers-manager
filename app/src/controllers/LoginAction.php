@@ -33,7 +33,7 @@ final class LoginAction
             $password = $allPostVar['password'];
             if($username == $auth_username && $password == $auth_password) {
                 $_SESSION['auth'] = 'admin';
-                return $response->withRedirect('plans-manager');
+                return $response->withRedirect('homepage');
             }
         }
 

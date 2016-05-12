@@ -25,6 +25,9 @@ final class AddSubscriber
 
     public function __invoke(Request $request, Response $response, $args)
     {
+        if(!isset($_SESSION['auth'])) {
+            return $response->withRedirect('login');
+        }
         if ($request->isGet()) {
             $planDAO = new PlanDAO($this->db);
             $planList = $planDAO->getAllPlans();

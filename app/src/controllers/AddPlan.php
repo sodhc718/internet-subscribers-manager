@@ -23,6 +23,9 @@ final class AddPlan
 
     public function __invoke(Request $request, Response $response, $args)
     {
+        if(!isset($_SESSION['auth'])) {
+            return $response->withRedirect('login');
+        }
         if ($request->isGet()) {
         $this->view->render($response, 'add_plan.twig',
                             ["category" => "Gói cước dịch vụ",
