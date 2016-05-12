@@ -16,7 +16,6 @@ $app->get('/get-plan-data-id', App\controllers\PlansManager::class. ':getPlanDat
 $app->get('/subs-manager', App\controllers\SubscribersManager::class)
     ->setName('subs-manager');
 
-<<<<<<< HEAD
 $app->get('/login', App\controllers\LoginAction::class)
     ->setName('login');
 
@@ -25,7 +24,7 @@ $app->post('/login', App\controllers\LoginAction::class)
 
 $app->get('/logout', App\controllers\LogoutAction::class)
     ->setName('logout');
-=======
+
 $app->get('/add-plan', App\controllers\AddPlan::class)
     ->setName('add-plan');
 
@@ -34,4 +33,3 @@ $app->post('/add-plan', App\controllers\AddPlan::class)
 
 $app->get('/delete-plan', App\controllers\DeletePlan::class)
     ->setName('delete-plan');
->>>>>>> a4346c37d489ec680406d64ee59c1ae129df31c0
