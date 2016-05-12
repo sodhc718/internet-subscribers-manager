@@ -33,3 +33,9 @@ $app->post('/add-plan', App\controllers\AddPlan::class)
 
 $app->get('/delete-plan', App\controllers\DeletePlan::class)
     ->setName('delete-plan');
+
+$app->get('/add-subscriber', App\controllers\AddSubscriber::class)
+    ->setName('add-subscriber');
+
+$app->post('/add-subscriber', App\controllers\AddSubscriber::class)
+    ->setName('add-subscriber');

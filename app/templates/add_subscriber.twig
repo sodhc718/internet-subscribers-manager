@@ -1,0 +1,198 @@
+{% extends 'base.twig' %}
+{% block head %}
+  <script type="text/javascript" src="{{ base_url() }}/assets/js/pages/add_subscriber_validate.js"></script>
+{% endblock %}
+
+{% block content_area %}
+  <!-- Content area -->
+  <div class="content">
+
+    <!-- Form panel -->
+    <div class="panel panel-flat">
+      <div class="panel-heading">
+        <h5 class="panel-title">Thêm gói cước Internet</h5>
+        <div class="heading-elements">
+          <ul class="icons-list">
+            <li><a data-action="collapse"></a></li>
+            <li><a data-action="reload"></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Add plan form -->
+      <div class="panel-body">
+        <form class="form-horizontal" action="add-subscriber" method="post">
+
+          <fieldset class="content-group">
+            <legend class="text-bold">Thông tin cá nhân</legend>
+            <div class="form-group">
+              <label class="control-label col-lg-2">Số hợp đồng:</label>
+              <div class="col-lg-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="icon-menu6"></i>
+                  </span>
+                  <input name="contractCode" class="form-control" placeholder="Mã số hợp đồng" type="text"></input>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-lg-2">Họ tên:</label>
+              <div class="col-lg-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="icon-user-tie"></i>
+                  </span>
+                  <input name="fullName" class="form-control" placeholder="Họ tên đầy đủ của chủ thuê bao" type="text"></input>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-lg-2">Địa chỉ:</label>
+              <div class="col-lg-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="icon-home5"></i>
+                  </span>
+                  <input name="address" class="form-control" placeholder="Địa chỉ" type="text"></input>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-lg-2">Số CMND:</label>
+              <div class="col-lg-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="icon-address-book"></i>
+                  </span>
+                  <input name="passport" class="form-control" placeholder="Số chứng minh nhân dân" type="text"></input>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-lg-2">Ngày cấp CMND:</label>
+              <div class="col-lg-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="icon-calendar22"></i>
+                  </span>
+                  <input name="passportIssueDate" id="passportIssueDate" class="form-control" placeholder="Ngày cấp chứng minh nhân dân" type="text"></input>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-lg-2">Nơi cấp:</label>
+              <div class="col-lg-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="icon-location3"></i>
+                  </span>
+                  <input name="passportIssueAddress" class="form-control" placeholder="Nơi cấp chứng minh nhân dân" type="text"></input>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-lg-2">Email:</label>
+              <div class="col-lg-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="icon-mention"></i>
+                  </span>
+                  <input name="email" class="form-control" placeholder="Email" type="text"></input>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-lg-2">Số điện thoại:</label>
+              <div class="col-lg-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-phone"></i>
+                  </span>
+                  <input name="phoneNumber" class="form-control" placeholder="Số điện thoại" type="text"></input>
+                </div>
+              </div>
+            </div>
+
+          </fieldset>
+
+          <fieldset class="content-group">
+            <legend class="text-bold">Thông tin dịch vụ và tài khoản</legend>
+
+            <div class="form-group">
+              <label class="control-label col-lg-2">Gói dịch vụ:</label>
+              <div class="col-lg-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="icon-package"></i>
+                  </span>
+                  <select name="planSelect" class="bootstrap-select bs-select-hidden" data-width="100%">
+                    {% for plan in plans %}
+                    <option value="{{ plan.getPlanId() }}">{{ plan.getPlanName() }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-lg-2">Username:</label>
+              <div class="col-lg-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="icon-user"></i>
+                  </span>
+                  <input name="username" class="form-control" placeholder="Username dùng để đăng nhập xem thông tin" type="text"></input>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-lg-2">Password:</label>
+              <div class="col-lg-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="icon-lock2"></i>
+                  </span>
+                  <input name="password" id="password" class="form-control" placeholder="Mật khẩu" type="password"></input>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-lg-2">Repeat password:</label>
+              <div class="col-lg-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="icon-lock2"></i>
+                  </span>
+                  <input name="repeatPassword" class="form-control" placeholder="Nhập lại mật khẩu" type="password"></input>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="text-right">
+            <button type="reset" class="btn btn-default" id="reset">
+              Làm lại
+              <i class="icon-reload-alt position-right"></i>
+            </button>
+            <button class="btn bg-teal-400" type="submit">
+              Thêm
+              <i class="icon-arrow-right14 position-right"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+
+
+    <!-- Footer -->
+    <div class="footer text-muted">
+      &copy; 2016. Developed by Luu Dinh Hai Chau & Tran Viet Ha - Theme: Limitless Web App by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+    </div>
+    <!-- /Footer -->
+
+  </div>
+  <!-- /content area -->
+{% endblock %}

@@ -14,6 +14,10 @@ class Customer
     protected $register_date;
     protected $email;
     protected $passwd;
+    protected $passport;
+    protected $passportIssueDate;
+    protected $passportIssueLoc;
+    protected $username;
 
     function __construct(array $data)
     {
@@ -27,6 +31,10 @@ class Customer
         $this->register_date = $data['ngay_dang_ki'];
         $this->email = $data['email'];
         $this->passwd = $data['mat_khau'];
+        $this->passport = $data['cmnd'];
+        $this->passportIssueDate = $data['ngay_cap_cmnd'];
+        $this->passportIssueLoc = $data['noi_cap_cmnd'];
+        $this->username = $data['username'];
     }
 
     /**
@@ -225,6 +233,86 @@ class Customer
     protected function setPasswd($passwd)
     {
         $this->passwd = $passwd;
+
+        return $this;
+    }
+
+    /**
+     *
+     * Get value of passport
+     *
+     */
+    public function getPassport() {
+        return $this->passport;
+    }
+
+    /**
+     *
+     * Sets the value of passport
+     *
+     */
+    protected function setPassport($passport) {
+        $this->passport = $passport;
+
+        return $this;
+    }
+
+    /**
+     *
+     * Get value of passportIssueDate
+     *
+     */
+    public function getPassportIssueDate() {
+        return $this->passportIssueDate;
+    }
+
+    /**
+     *
+     * Sets the value of passportIssueDate
+     *
+     */
+    protected function setPassportIssueDate($passportIssueDate) {
+        $this->passportIssueDate = $passportIssueDate;
+
+        return $this;
+    }
+
+    /**
+     *
+     * Get value of passportIssueLoc
+     *
+     */
+    public function getPassportIssueLoc() {
+        return $this->passportIssueLoc;
+    }
+
+    /**
+     *
+     * Sets the value of passportIssueDate
+     *
+     */
+    protected function setPassportIssueLoc($passportIssueLoc) {
+        $this->passportIssueLoc = $passportIssueLoc;
+
+        return $this;
+    }
+
+    /**
+     *
+     * Get value of username
+     *
+     */
+    public function getUsername() {
+        return $this->username;
+    }
+
+    /**
+     *
+     * Sets the value of passportIssueDate
+     *
+     */
+    protected function setUsername($username) {
+        $this->username = $username;
 
         return $this;
     }

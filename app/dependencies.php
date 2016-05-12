@@ -87,3 +87,7 @@ $container[App\controllers\AddPlan::class] = function ($c) {
 $container[App\controllers\DeletePlan::class] = function ($c) {
     return new App\controllers\DeletePlan($c->get('view'), $c->get('logger'), $c->get('db'));
 };
+
+$container[App\controllers\AddSubscriber::class] = function ($c) {
+    return new App\controllers\AddSubscriber($c->get('view'), $c->get('logger'), $c->get('db'));
+};
