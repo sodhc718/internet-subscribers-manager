@@ -39,7 +39,7 @@ class PlanDAO extends Mapper
         $result = $stmt->execute(["plan_id" => $plan_id]);
 
         if ($result) {
-            return new Plan($result->fetch());
+            return new Plan($stmt->fetch());
         }
     }
 

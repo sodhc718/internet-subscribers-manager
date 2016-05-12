@@ -7,6 +7,12 @@ $app->get('/', App\controllers\HomeAction::class)
 $app->get('/plans-manager', App\controllers\PlansManager::class)
     ->setName('plans-manager');
 
+$app->get('/get-plan-data', App\controllers\PlansManager::class. ':getPlanData')
+    ->setName('get-plan-data');
+
+$app->get('/get-plan-data-id', App\controllers\PlansManager::class. ':getPlanDataByID')
+    ->setName('get-plan-data-id');
+
 $app->get('/subs-manager', App\controllers\SubscribersManager::class)
     ->setName('subs-manager');
 

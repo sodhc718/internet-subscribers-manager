@@ -55,4 +55,13 @@ $(function() {
         }
       });
   });
+
+  $('a[data-target=#edit_plan]').click(function(event) {
+    $tr = $(this).closest('tr');
+    $.getJSON('/get-plan-data-id', {"planID": $tr.children().first('td').text()}, function (data) {
+      $("#edit_plan input[name=planName]").val(data[0]);
+      $("#edit_plan input[name=planPrice]").val(data[1]);
+      $("#edit_plan input[name=planDes]").val(data[2]);
+    })
+  });
 });
