@@ -39,7 +39,30 @@ class PlanDAO extends Mapper
         $result = $stmt->execute(["plan_id" => $plan_id]);
 
         if ($result) {
-            return new Plan($result->fetch());
+            return new Plan($stmt->fetch());
+        }
+    }
+
+    public function insert(Plan $plan)
+    {
+        $sql = "insert into goi_cuoc(ten_goi_cuoc, cuoc_phi, mo_ta)
+                values(:planName, :planPrice, :planDes)";
+        $stmt = $this->db->prepare($sql);
+        $result = $stmt->execute(["planName" => $plan->getPlanName(),
+                                  "planPrice" => $plan->getPlanCost(),
+                                  "planDes" => $plan->getPlanDesc()]);
+        if (!$result) {
+            throw new Exception("Could not save record");
+        }
+    }
+
+    public function deletePlanByID($planID)
+    {
+        $sql = "delete from goi_cuoc where ma_goi_cuoc = :planID";
+        $stmt = $this->db->prepare($sql);
+        $result = $stmt->execute(["planID" => $planID]);
+        if (!$result) {
+            throw new Exception("Could not delete record");
         }
     }
 }

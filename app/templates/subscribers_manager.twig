@@ -38,26 +38,28 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{{ customer.getSubcribersNum() }}</td>
-              <td>{{ customer.getName() }}</td>
-              <td>{{ plans[customer.getPlanId()] }}</td>
-              <td>{{ customer.getAddress() }}</td>
-              <td class="text-center">
-                <ul class="icons-list">
-                  <li>
-                    <a href="#" data-toggle="modal" data-target="#edit_subscriber">
-                      <i class="icon-file-eye"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="confirm">
-                      <i class="icon-cross2"></i>
-                    </a>
-                  </li>
-                </ul>
-              </td>
-            </tr>
+            {% for customer in customers %}
+              <tr>
+                <td>{{ customer.getSubcribersNum() }}</td>
+                <td>{{ customer.getName() }}</td>
+                <td>{{ plans[customer.getPlanId()] }}</td>
+                <td>{{ customer.getAddress() }}</td>
+                <td class="text-center">
+                  <ul class="icons-list">
+                    <li>
+                      <a href="#" data-toggle="modal" data-target="#edit_subscriber">
+                        <i class="icon-file-eye"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="confirm">
+                        <i class="icon-cross2"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            {% endfor %}
           </tbody>
         </table>
       <!-- </div> -->

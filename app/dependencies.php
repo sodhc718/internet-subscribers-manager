@@ -71,10 +71,19 @@ $container[App\controllers\SubscribersManager::class] = function ($c) {
     return new App\controllers\SubscribersManager($c->get('view'), $c->get('logger'), $c->get('db'));
 };
 
+
 $container[App\controllers\LoginAction::class] = function ($c) {
     return new App\controllers\LoginAction($c->get('view'), $c->get('logger'), $c->get('db'), $c->get('auth'));
 };
 
 $container[App\controllers\LogoutAction::class] = function ($c) {
     return new App\controllers\LogoutAction($c->get('view'), $c->get('logger'));
+};
+
+$container[App\controllers\AddPlan::class] = function ($c) {
+    return new App\controllers\AddPlan($c->get('view'), $c->get('logger'), $c->get('db'));
+};
+
+$container[App\controllers\DeletePlan::class] = function ($c) {
+    return new App\controllers\DeletePlan($c->get('view'), $c->get('logger'), $c->get('db'));
 };

@@ -35,4 +35,26 @@ final class PlansManager
                              "sub_category"=> "Quản lý gói cước"]);
         return $response;
     }
+
+    public function getPlanData(Request $request, Response $response, $args)
+    {
+        $planDAO = new PlanDAO($this->db);
+        $planList = $planDAO->getAllPlans();
+        $planData = [];
+        foreach ($planList as $plan) {
+            $planData[$plan->getPlanId()] = [$plan->getPlanName(), $plan->getPlanCost(), $plan->getPlanDesc()];
+        }
+        $response = $response->withJson($planData, 201);
+        return $response;
+    }
+
+    public function getPlanDataByID(Request $request, Response $response, $args)
+    {
+        $planID = $request->getParam('planID');
+        $planDAO = new PlanDAO($this->db);
+        $plan = $planDAO->getPlanById($planID);
+        $planData = array($plan->getPlanName(), $plan->getPlanCost(), $plan->getPlanDesc());
+        $response = $response->withJson($planData, 201);
+        return $response;
+    }
 }
