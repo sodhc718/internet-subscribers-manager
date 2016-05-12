@@ -41,7 +41,7 @@ final class AddSubscriber
             $customer_data['so_thue_bao'] = filter_var($data['contractCode'], FILTER_SANITIZE_STRING);
             $customer_data['hoten'] = filter_var($data['fullName'], FILTER_SANITIZE_STRING);
             $customer_data['dia_chi'] = filter_var($data['address'], FILTER_SANITIZE_STRING);
-            $customer_data['cmnd'] = filter_var($data['passport'], FILTER_SANITIZE_NUMBER_INT);
+            $customer_data['cmnd'] = filter_var($data['passport'], FILTER_SANITIZE_STRING);
             $customer_data['ngay_cap_cmnd'] = filter_var($data['passportIssueDate'], FILTER_SANITIZE_STRING);
             $customer_data['noi_cap_cmnd'] = filter_var($data['passportIssueAddress'], FILTER_SANITIZE_STRING);
             $customer_data['email'] = filter_var($data['email'], FILTER_VALIDATE_EMAIL);
@@ -49,7 +49,7 @@ final class AddSubscriber
             $customer_data['ma_goi_cuoc'] = filter_var($data['planSelect'], FILTER_SANITIZE_NUMBER_INT);
             $customer_data['username'] = filter_var($data['username'], FILTER_SANITIZE_STRING);
             $customer_data['mat_khau'] = filter_var($data['password'], FILTER_SANITIZE_STRING);
-            $customer_data['ngay_dang_ki'] = date('d/m/Y');
+            $customer_data['ngay_dang_ki'] = filter_var($data['registerDate'], FILTER_SANITIZE_STRING);;
 
             $customer = new Customer($customer_data);
 

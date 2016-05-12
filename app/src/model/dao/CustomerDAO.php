@@ -47,8 +47,7 @@ class CustomerDAO extends Mapper
 
     public function insert(Customer $customer)
     {
-        $sql = "insert into khach_hang(so_thue_bao, hoten, dia_chi, cmnd, ngay_cap_cmnd, noi_cap_cmnd, email, so_dien_thoai, ma_goi_cuoc, username, mat_khau)
-                values(:contractCode, :fullName, :address, :passport, :passportIssueDate, :passportIssueLoc, :email, :phoneNum, :planId, :username, :passwd)";
+        $sql = "insert into khach_hang(so_thue_bao, hoten, dia_chi, cmnd, ngay_cap_cmnd, noi_cap_cmnd, email, so_dien_thoai, ma_goi_cuoc, ngay_dang_ki, username, mat_khau) values(:contractCode, :fullName, :address, :passport, :passportIssueDate, :passportIssueLoc, :email, :phoneNum, :planId, :registerDate, :username, :passwd)";
         $stmt = $this->db->prepare($sql);
         $result = $stmt->execute(["contractCode" => $customer->getSubcribersNum(),
                                   "fullName" => $customer->getName(),
@@ -59,10 +58,20 @@ class CustomerDAO extends Mapper
                                   "email" => $customer->getEmail(),
                                   "phoneNum" => $customer->getPhoneNum(),
                                   "planId" => $customer->getPlanId(),
+                                  "registerDate" => $customer->getRegisterDate(),
                                   "username" => $customer->getUsername(),
                                   "passwd" => $customer->getPasswd()]);
         if (!$result) {
             throw new Exception("Could not save record");
+        }
+    }
+    public function deleteCustomerBySubNum($subNum)
+    {
+        $sql = "delete from khach_hang where so_thue_bao = :subNum";
+        $stmt = $this->db->prepare($sql);
+        $result = $stmt->execute(["subNum" => $subNum]);
+        if (!$result) {
+            throw new Exception("Could not delete record");
         }
     }
 }

@@ -1,6 +1,9 @@
 $(function() {
   $("#passportIssueDate").AnyTime_picker({
-    format: "%d/%m/%Z"
+    format: "%Z-%m-%d"
+  });
+  $("#registerDate").AnyTime_picker({
+    format: "%Z-%m-%d"
   });
 
   // Plan select
@@ -112,7 +115,10 @@ $(function() {
   $('.confirm').on('click', function() {
       $tr = $(this).closest('tr');
       bootbox.confirm("Bạn có chắc chắn muốn xoá thuê bao này không?", function(result) {
-        if (result) { $tr.remove(); }
+        if (result == true) {
+          $.get('/delete-customer', {"subNum": $tr.children().first('td').text()})
+          $tr.remove();
+        }
       });
   });
 });

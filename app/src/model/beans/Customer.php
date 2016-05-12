@@ -21,9 +21,7 @@ class Customer
 
     function __construct(array $data)
     {
-        if (isset($data['so_thue_bao'])) {
-            $this->subcribers_num = $data['so_thue_bao'];
-        }
+        $this->subcribers_num = $data['so_thue_bao'];
         $this->name = $data['hoten'];
         $this->address = $data['dia_chi'];
         $this->phone_num = $data['so_dien_thoai'];

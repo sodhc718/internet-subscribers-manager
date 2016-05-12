@@ -1,8 +1,10 @@
 $(function() {
   $("#passportIssueDate").AnyTime_picker({
-    format: "%d/%m/%Z"
+    format: "%Z-%m-%d"
   });
-
+  $("#registerDate").AnyTime_picker({
+    format: "%Z-%m-%d"
+  });
   // Plan select
   $('.bootstrap-select').selectpicker();
 

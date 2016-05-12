@@ -42,3 +42,6 @@ $app->get('/add-subscriber', App\controllers\AddSubscriber::class)
 
 $app->post('/add-subscriber', App\controllers\AddSubscriber::class)
     ->setName('add-subscriber');
+
+$app->get('/delete-customer', App\controllers\DeleteCustomer::class)
+    ->setName('delete-customer');
