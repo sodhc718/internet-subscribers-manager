@@ -18,15 +18,17 @@
   <!-- Core JS files -->
   <script type="text/javascript" src="assets/js/core/libraries/jquery.min.js"></script>
   <script type="text/javascript" src="assets/js/core/libraries/bootstrap.min.js"></script>
-  <script type="text/javascript" src="assets/js/plugins/tables/datatables/datatables.min.js"></script>
   <script type="text/javascript" src="assets/js/plugins/forms/selects/select2.min.js"></script>
+  <script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
   <!-- /core JS files -->
 
   <!-- Theme JS files -->
+  <script type="text/javascript" src="assets/js/plugins/pickers/anytime.min.js"></script>
+  <script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_select.min.js"></script>
   <script type="text/javascript" src="assets/js/core/app.js"></script>
-  <!-- /theme JS files -->
 
-  <script type="text/javascript" src="subscribers_manager.js"></script>
+  <script type="text/javascript" src="add_subscriber_validate.js"></script>
+  <!-- /theme JS files -->
 
 </head>
 
@@ -117,7 +119,6 @@
                   <a href="#"><i class="icon-users"></i> <span>Thuê bao</span></a>
                   <ul>
                     <li><a href="subscribers_manager.html">Danh sách thuê bao</a></li>
-                    <li><a href="#">Chi tiết thuê bao</a></li>
                     <li class="active"><a href="add_subscriber.html">Thêm thuê bao</a></li>
                   </ul>
                 </li>
@@ -125,7 +126,7 @@
                   <a href="#"><i class="glyphicon glyphicon-list-alt"></i> <span>Gói cước dịch vụ</span></a>
                   <ul>
                     <li><a href="plans_manager.html">Quản lý gói cước</a></li>
-                    <li><a href="#">Thêm gói cước</a></li>
+                    <li><a href="add_plan.html">Thêm gói cước</a></li>
                   </ul>
                 </li>
                 <li><a href="#"><i class="icon-cash3"></i> <span>Hoá đơn điện tử</span></a></li>
@@ -182,10 +183,10 @@
         <!-- Content area -->
         <div class="content">
 
-          <!-- Table panel -->
+          <!-- Form panel -->
           <div class="panel panel-flat">
             <div class="panel-heading">
-              <h5 class="panel-title">Danh sách thuê bao</h5>
+              <h5 class="panel-title">Thêm gói cước Internet</h5>
               <div class="heading-elements">
                 <ul class="icons-list">
                   <li><a data-action="collapse"></a></li>
@@ -194,69 +195,175 @@
               </div>
             </div>
 
+            <!-- Add plan form -->
             <div class="panel-body">
-              <p class="content-group">Danh sách thuê bao gồm họ tên, số hợp đồng, gói cước và địa chỉ</p>
+              <form class="form-horizontal" action="index.html" method="post">
+
+                <fieldset class="content-group">
+                  <legend class="text-bold">Thông tin cá nhân</legend>
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Số hợp đồng:</label>
+                    <div class="col-lg-10">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="icon-menu6"></i>
+                        </span>
+                        <input name="contractCode" class="form-control" placeholder="Mã số hợp đồng" type="text"></input>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Họ tên:</label>
+                    <div class="col-lg-10">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="icon-user-tie"></i>
+                        </span>
+                        <input name="fullName" class="form-control" placeholder="Họ tên đầy đủ của chủ thuê bao" type="text"></input>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Địa chỉ:</label>
+                    <div class="col-lg-10">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="icon-home5"></i>
+                        </span>
+                        <input name="address" class="form-control" placeholder="Địa chỉ" type="text"></input>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Số CMND:</label>
+                    <div class="col-lg-10">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="icon-address-book"></i>
+                        </span>
+                        <input name="passport" class="form-control" placeholder="Số chứng minh nhân dân" type="text"></input>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Ngày cấp CMND:</label>
+                    <div class="col-lg-10">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="icon-calendar22"></i>
+                        </span>
+                        <input name="passportIssueDate" id="passportIssueDate" class="form-control" placeholder="Ngày cấp chứng minh nhân dân" type="text"></input>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Nơi cấp:</label>
+                    <div class="col-lg-10">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="icon-location3"></i>
+                        </span>
+                        <input name="passportIssueAddress" class="form-control" placeholder="Nơi cấp chứng minh nhân dân" type="text"></input>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Email:</label>
+                    <div class="col-lg-10">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="icon-mention"></i>
+                        </span>
+                        <input name="email" class="form-control" placeholder="Email" type="text"></input>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Số điện thoại:</label>
+                    <div class="col-lg-10">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="glyphicon glyphicon-phone"></i>
+                        </span>
+                        <input name="phoneNumber" class="form-control" placeholder="Số điện thoại" type="text"></input>
+                      </div>
+                    </div>
+                  </div>
+
+                </fieldset>
+
+                <fieldset class="content-group">
+                  <legend class="text-bold">Thông tin dịch vụ và tài khoản</legend>
+
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Gói dịch vụ:</label>
+                    <div class="col-lg-10">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="icon-package"></i>
+                        </span>
+                        <select class="bootstrap-select bs-select-hidden" data-width="100%">
+                          <option value="AK">FTTH-F2</option>
+                          <option value="HI">FTTH-F3</option>
+                          <option value="CA">FTTH-F4</option>
+                          <option value="NV">FTTH-F5</option>
+                          <option value="OR">FTTH-F6</option>
+                        </select>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Username:</label>
+                    <div class="col-lg-10">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="icon-user"></i>
+                        </span>
+                        <input name="username" class="form-control" placeholder="Username dùng để đăng nhập xem thông tin" type="text"></input>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Password:</label>
+                    <div class="col-lg-10">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="icon-lock2"></i>
+                        </span>
+                        <input name="password" id="password" class="form-control" placeholder="Mật khẩu" type="password"></input>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Repeat password:</label>
+                    <div class="col-lg-10">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="icon-lock2"></i>
+                        </span>
+                        <input name="repeatPassword" class="form-control" placeholder="Nhập lại mật khẩu" type="password"></input>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <div class="text-right">
+                  <button type="reset" class="btn btn-default" id="reset">
+                    Làm lại
+                    <i class="icon-reload-alt position-right"></i>
+                  </button>
+                  <button class="btn bg-teal-400" type="submit">
+                    Thêm
+                    <i class="icon-arrow-right14 position-right"></i>
+                  </button>
+                </div>
+              </form>
             </div>
-
-            <!-- <div class="table-responsive"> -->
-              <table class="table datatable-basic table-hover">
-                <thead>
-                  <tr>
-                    <th>Số HĐ</th>
-                    <th>Họ tên</th>
-                    <th>Gói dịch vụ</th>
-                    <th>Địa chỉ</th>
-                    <th class="text-center">Hành động</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>DAFD06227</td>
-                    <td>Luu Dinh Hai Chau</td>
-                    <td>FTTH - F6</td>
-                    <td>K82/103 Nguyen Luong Bang, P.Hoa khanh Bac, Q.Lien Chieu, Da Nang</td>
-                    <td class="text-center">
-                      <ul class="icons-list">
-                        <li>
-                          <a href="#" data-toggle="modal" data-target="#">
-                            <i class="icon-file-eye"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" data-toggle="modal" data-target="#">
-                            <i class="icon-cross2"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>DAFD06227</td>
-                    <td>Bui Van Thanh Khue</td>
-                    <td>FTTH - F6</td>
-                    <td>K82/103 Nguyen Luong Bang, P.Hoa khanh Bac, Q.Lien Chieu, Da Nang</td>
-                    <td class="text-center">
-                      <ul class="icons-list">
-                        <li>
-                          <a href="#" data-toggle="modal" data-target="#">
-                            <i class="icon-file-eye"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" data-toggle="modal" data-target="#">
-                            <i class="icon-cross2"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
-                  </tr>
-                </tbody>
-              </table>
-            <!-- </div> -->
             
-
           </div>
+          <!-- </div> -->
 
 
           <!-- Footer -->

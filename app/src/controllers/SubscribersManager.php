@@ -32,7 +32,9 @@ final class SubscribersManager
         $customers = $customerDAO->getAllCustomers();
         $this->view->render($response, 'subscribers_manager.twig',
                             ["customers" => $customers,
-                             "plans" => $plans]);
+                             "plans" => $plans,
+                             "category" => "Thuê bao",
+                             "sub_category"=> "Danh sách thuê bao"]);
         return $response;
     }
 }
