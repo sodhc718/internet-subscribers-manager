@@ -26,5 +26,8 @@ return [
             'pass' => 'vietha23',
             'dbname' => 'internet_subscribers_manager',
         ],
+        'auth' => [
+            'admin' => 'thanhtam714'
+        ]
     ],
 ];

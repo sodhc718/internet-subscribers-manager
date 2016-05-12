@@ -24,6 +24,9 @@ final class PlansManager
 
     public function __invoke(Request $request, Response $response, $args)
     {
+        if(!isset($_SESSION['auth'])) {
+            return $response->withRedirect('login');
+        }
         $planDAO = new PlanDAO($this->db);
         $planList = $planDAO->getAllPlans();
         $this->view->render($response, 'plans_manager.twig',
