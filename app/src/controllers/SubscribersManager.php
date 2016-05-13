@@ -50,12 +50,24 @@ final class SubscribersManager
                               "passportIssueDate" => $customer->getPassportIssueDate(),
                               "passportIssueAddress" => $customer->getPassportIssueLoc(),
                               "email" => $customer->getEmail(),
-                              "contractCode" => $customer->getPhoneNum(),
-                              "phoneNumber" => $customer->getSubcribersNum(),
-                              "planSelect" => $customer->getPlanId(),
+                              "contractCode" => $customer->getSubcribersNum(),
+                              "phoneNumber" => $customer->getPhoneNum(),
+                              "planId" => $customer->getPlanId(),
                               "registerDate" => $customer->getRegisterDate(),
                               "username" => $customer->getUsername());
         $response = $response->withJson($customerData, 201);
+        return $response;
+    }
+
+    public function updateSubs(Request $request, Response $response, $args)
+    {
+        $subData = $request->getParam("subData");
+        $customerDAO = new CustomerDAO($this->db);
+        $planDAO = new PlanDAO($this->db);
+        $planName = $planDAO->getPlanById($subData["planId"])->getPlanName();
+        $subData["planName"] = $planName;
+        $customerDAO->update($subData);
+        $response = $response->withJson($subData, 201);
         return $response;
     }
 }

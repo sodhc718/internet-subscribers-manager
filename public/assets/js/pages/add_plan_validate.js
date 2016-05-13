@@ -85,7 +85,7 @@ $(function() {
       $tr.children().eq(1).text(planData["planName"]);
       $tr.children().eq(2).children().first().text(planData["planPrice"] + " VND");
       $tr.children().eq(3).text(planData["planDes"]);
-    })
+    });
 
   });
 });

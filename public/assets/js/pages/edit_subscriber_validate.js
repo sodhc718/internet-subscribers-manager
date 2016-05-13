@@ -138,11 +138,35 @@ $(function() {
       $("#edit_subscriber input[name=email]").val(data["email"]);
       $("#edit_subscriber input[name=contractCode]").val(data["contractCode"]);
       $("#edit_subscriber input[name=phoneNumber]").val(data["phoneNumber"]);
-      $("#edit_subscriber select[name=planSelect]").val(data["planSelect"]);
+      $("#edit_subscriber select[name=planSelect]").val(data["planId"]);
       $("#edit_subscriber select[name=planSelect]").selectpicker('refresh');
       $("#edit_subscriber input[name=registerDate]").val(data["registerDate"]);
       $("#edit_subscriber input[name=username]").val(data["username"]);
     });
   });
 
+  $('#edit_subscriber form').submit(function(ev) {
+    ev.preventDefault();
+    var subData = {
+      "fullName": $("#edit_subscriber input[name=fullName]").val(),
+      "address": $("#edit_subscriber input[name=address]").val(),
+      "passport": $("#edit_subscriber input[name=passport]").val(),
+      "passportIssueDate": $("#edit_subscriber input[name=passportIssueDate]").val(),
+      "passportIssueAddress": $("#edit_subscriber input[name=passportIssueAddress]").val(),
+      "email": $("#edit_subscriber input[name=email]").val(),
+      "subNum": $("#edit_subscriber input[name=contractCode]").val(),
+      "phoneNum": $("#edit_subscriber input[name=phoneNumber]").val(),
+      "planId": $("#edit_subscriber select[name=planSelect]").val(),
+      "registerDate": $("#edit_subscriber input[name=registerDate]").val(),
+      "username": $("#edit_subscriber input[name=username]").val(),
+    }
+    $.post('update-subs', {"subData": subData}, function(resSubData) {
+      $("#edit_subscriber button[class=close]").trigger("click");
+      $tr = $("table tbody tr td").filter(function() {return $(this).text() === subData["subNum"]}).parent();
+      $tr.children().eq(0).text(resSubData["subNum"]);
+      $tr.children().eq(1).text(resSubData["fullName"]);
+      $tr.children().eq(2).text(resSubData["planName"]);
+      $tr.children().eq(3).text(resSubData["address"]);
+    });
+  });
 });

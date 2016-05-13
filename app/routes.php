@@ -48,3 +48,6 @@ $app->get('/delete-customer', App\controllers\DeleteCustomer::class)
 
 $app->get('/get-customer-data-subnum', App\controllers\SubscribersManager::class. ':getCustomerDataBySubNum')
     ->setName('get-customer-data-subnum');
+
+$app->post('/update-subs', App\controllers\SubscribersManager::class. ':updateSubs')
+    ->setName('update-subs');
