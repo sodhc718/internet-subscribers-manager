@@ -139,6 +139,7 @@ $(function() {
       $("#edit_subscriber input[name=contractCode]").val(data["contractCode"]);
       $("#edit_subscriber input[name=phoneNumber]").val(data["phoneNumber"]);
       $("#edit_subscriber select[name=planSelect]").val(data["planSelect"]);
+      $("#edit_subscriber select[name=planSelect]").selectpicker('refresh');
       $("#edit_subscriber input[name=registerDate]").val(data["registerDate"]);
       $("#edit_subscriber input[name=username]").val(data["username"]);
     });
