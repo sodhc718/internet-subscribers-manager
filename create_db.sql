@@ -19,7 +19,7 @@ CREATE TABLE `khach_hang` (
   `dia_chi` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `so_dien_thoai` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
   `ma_goi_cuoc` int(3) NOT NULL,
-  `cmnd` int(15) NOT NULL,
+  `cmnd` varchar(15) NOT NULL,
   `noi_cap_cmnd` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `ngay_cap_cmnd` date NOT NULL,
   `ngay_dang_ki` date NOT NULL,
