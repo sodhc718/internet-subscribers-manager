@@ -6,6 +6,9 @@ $(function() {
     format: "%Z-%m-%d"
   });
 
+  $("#AnyTime--passportIssueDate").appendTo('#edit_subscriber');
+  $("#AnyTime--registerDate").appendTo('#edit_subscriber');
+
   // Plan select
   $('.bootstrap-select').selectpicker();
 
@@ -92,7 +95,7 @@ $(function() {
       },
       phoneNumber: {
         required: "Số điện thoại không được trống.",
-        digits: "Số điện thoạikhông đúng định dạng."
+        digits: "Số điện thoại không đúng định dạng."
       },
       username: {
         required: "Username không được trống.",
@@ -127,17 +130,17 @@ $(function() {
     $tr = $(this).closest('tr');
     var subNum = $tr.children().first('td').text();
     $.getJSON('/get-customer-data-subnum', {"subNum": subNum}, function (data) {
-      $("#edit_subscriber input[name=fullName]").val(data[0]);
-      $("#edit_subscriber input[name=address]").val(data[1]);
-      $("#edit_subscriber input[name=passport]").val(data[2]);
-      $("#edit_subscriber input[name=passportIssueDate]").val(data[3]);
-      $("#edit_subscriber input[name=passportIssueAddress]").val(data[4]);
-      $("#edit_subscriber input[name=email]").val(data[5]);
-      $("#edit_subscriber input[name=contractCode]").val(data[6]);
-      $("#edit_subscriber input[name=phoneNumber]").val(data[7]);
-      $("#edit_subscriber select[name=planSelect]").val(data[8]);
-      $("#edit_subscriber input[name=registerDate]").val(data[9]);
-      $("#edit_subscriber input[name=username]").val(data[10]);
+      $("#edit_subscriber input[name=fullName]").val(data["fullName"]);
+      $("#edit_subscriber input[name=address]").val(data["address"]);
+      $("#edit_subscriber input[name=passport]").val(data["passport"]);
+      $("#edit_subscriber input[name=passportIssueDate]").val(data["passportIssueDate"]);
+      $("#edit_subscriber input[name=passportIssueAddress]").val(data["passportIssueAddress"]);
+      $("#edit_subscriber input[name=email]").val(data["email"]);
+      $("#edit_subscriber input[name=contractCode]").val(data["contractCode"]);
+      $("#edit_subscriber input[name=phoneNumber]").val(data["phoneNumber"]);
+      $("#edit_subscriber select[name=planSelect]").val(data["planSelect"]);
+      $("#edit_subscriber input[name=registerDate]").val(data["registerDate"]);
+      $("#edit_subscriber input[name=username]").val(data["username"]);
     });
   });
 

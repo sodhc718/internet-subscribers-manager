@@ -44,11 +44,17 @@ final class SubscribersManager
         $subNum = $request->getParam('subNum');
         $customerDAO = new CustomerDAO($this->db);
         $customer = $customerDAO->getCustomerBySubNum($subNum);
-        $customerData = array($customer->getName(), $customer->getAddress(),
-            $customer->getPassport(), $customer->getPassportIssueDate(), $customer->getPassportIssueLoc(),
-            $customer->getEmail(), $customer->getPhoneNum(),
-            $customer->getSubcribersNum(), $customer->getPlanId(), $customer->getRegisterDate(),
-            $customer->getUsername());
+        $customerData = array("fullName" => $customer->getName(),
+                              "address" => $customer->getAddress(),
+                              "passport" => $customer->getPassport(),
+                              "passportIssueDate" => $customer->getPassportIssueDate(),
+                              "passportIssueAddress" => $customer->getPassportIssueLoc(),
+                              "email" => $customer->getEmail(),
+                              "contractCode" => $customer->getPhoneNum(),
+                              "phoneNumber" => $customer->getSubcribersNum(),
+                              "planSelect" => $customer->getPlanId(),
+                              "registerDate" => $customer->getRegisterDate(),
+                              "username" => $customer->getUsername());
         $response = $response->withJson($customerData, 201);
         return $response;
     }

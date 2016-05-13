@@ -91,7 +91,7 @@ $(function() {
       },
       phoneNumber: {
         required: "Số điện thoại không được trống.",
-        digits: "Số điện thoạikhông đúng định dạng."
+        digits: "Số điện thoại không đúng định dạng."
       },
       username: {
         required: "Username không được trống.",
